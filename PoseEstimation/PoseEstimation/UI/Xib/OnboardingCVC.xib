@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OnboardingCVC" id="3sx-Er-vL2" customClass="OnboardingCVC" customModule="PoseEstimation" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="50f-ee-Xdw">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2X-Nz-gno">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding1" translatesAutoresizingMaskIntoConstraints="NO" id="5ui-RM-PPZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
+                                <color key="backgroundColor" red="1" green="0.097106073939999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5ui-RM-PPZ" secondAttribute="bottom" id="80Q-sP-pPh"/>
+                            <constraint firstItem="5ui-RM-PPZ" firstAttribute="top" secondItem="T2X-Nz-gno" secondAttribute="top" id="9zN-Vh-TKY"/>
+                            <constraint firstAttribute="trailing" secondItem="5ui-RM-PPZ" secondAttribute="trailing" id="Q6p-rD-IZg"/>
+                            <constraint firstItem="5ui-RM-PPZ" firstAttribute="leading" secondItem="T2X-Nz-gno" secondAttribute="leading" id="S87-UB-b5u"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9f-xE-DCP">
+                        <rect key="frame" x="0.0" y="367" width="375" height="367"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Resilient.ai" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9W-BK-QKA">
+                                <rect key="frame" x="30" y="59" width="315" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take control of body pain anywhere, on your schedule, instalntly" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SK1-pc-4Uz">
+                                <rect key="frame" x="30" y="128" width="315" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.01100386586" green="0.84782177209999998" blue="0.77115076780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="SK1-pc-4Uz" secondAttribute="trailing" constant="30" id="1sh-Yz-qy2"/>
+                            <constraint firstItem="p9W-BK-QKA" firstAttribute="leading" secondItem="a9f-xE-DCP" secondAttribute="leading" constant="30" id="L2a-ht-3l6"/>
+                            <constraint firstItem="p9W-BK-QKA" firstAttribute="centerY" secondItem="a9f-xE-DCP" secondAttribute="centerY" multiplier="0.4" id="QRL-F1-aTU"/>
+                            <constraint firstItem="SK1-pc-4Uz" firstAttribute="top" secondItem="p9W-BK-QKA" secondAttribute="bottom" constant="40" id="gW8-Tf-frj"/>
+                            <constraint firstAttribute="trailing" secondItem="p9W-BK-QKA" secondAttribute="trailing" constant="30" id="kvw-aU-4Ty"/>
+                            <constraint firstItem="SK1-pc-4Uz" firstAttribute="leading" secondItem="a9f-xE-DCP" secondAttribute="leading" constant="30" id="s3S-gA-GKy"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="T2X-Nz-gno" firstAttribute="height" secondItem="50f-ee-Xdw" secondAttribute="height" multiplier="0.5" id="0qN-KQ-aLj"/>
+                    <constraint firstItem="T2X-Nz-gno" firstAttribute="width" secondItem="50f-ee-Xdw" secondAttribute="width" id="5sr-5H-9Qu"/>
+                    <constraint firstItem="a9f-xE-DCP" firstAttribute="top" secondItem="T2X-Nz-gno" secondAttribute="bottom" id="IQU-gY-xPe"/>
+                    <constraint firstItem="a9f-xE-DCP" firstAttribute="centerX" secondItem="50f-ee-Xdw" secondAttribute="centerX" id="Lil-w7-Ytb"/>
+                    <constraint firstItem="T2X-Nz-gno" firstAttribute="top" secondItem="50f-ee-Xdw" secondAttribute="top" id="jX8-VO-O4E"/>
+                    <constraint firstItem="a9f-xE-DCP" firstAttribute="width" secondItem="50f-ee-Xdw" secondAttribute="width" id="jhc-kV-mVZ"/>
+                    <constraint firstItem="T2X-Nz-gno" firstAttribute="centerX" secondItem="50f-ee-Xdw" secondAttribute="centerX" id="qrN-wb-5iX"/>
+                    <constraint firstAttribute="bottom" secondItem="a9f-xE-DCP" secondAttribute="bottom" id="y1K-e2-cON"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="ZGy-0i-Rbv"/>
+            <connections>
+                <outlet property="infoL" destination="SK1-pc-4Uz" id="HgQ-wo-6c4"/>
+                <outlet property="onboardingIV" destination="5ui-RM-PPZ" id="vUn-4j-dd9"/>
+                <outlet property="titleL" destination="p9W-BK-QKA" id="SZB-Cb-R0s"/>
+            </connections>
+            <point key="canvasLocation" x="126" y="125"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="onboarding1" width="600" height="600"/>
+    </resources>
+</document>

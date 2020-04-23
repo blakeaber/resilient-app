@@ -24,12 +24,15 @@
 		7E44E0C22450ABA200E48B00 /* PredictedPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44E0C12450ABA200E48B00 /* PredictedPoint.swift */; };
 		7E44E0C42450AC4700E48B00 /* DrawingJointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44E0C32450AC4700E48B00 /* DrawingJointView.swift */; };
 		7E737F182451D6C600359950 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E737F172451D6C600359950 /* Extensions.swift */; };
+		7E737F1C2451FE3E00359950 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E737F1B2451FE3E00359950 /* OnboardingVC.swift */; };
+		7E737F1E2451FE5300359950 /* OnboardingCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E737F1D2451FE5300359950 /* OnboardingCVC.swift */; };
+		7E737F212451FE6700359950 /* OnboardingCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E737F202451FE6700359950 /* OnboardingCVC.xib */; };
 		D7E0434097BF53780072D06F /* Pods_PoseEstimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB77F6AFDE7A3CAD17CF3D3D /* Pods_PoseEstimation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7E17005E24517F85008A45F2 /* VideoWriteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoWriteManager.swift; sourceTree = "<group>"; };
-		7E44E0852450273000E48B00 /* PoseEstimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoseEstimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E44E0852450273000E48B00 /* Resilient.ai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resilient.ai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E44E0882450273000E48B00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E44E08A2450273000E48B00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7E44E08F2450273000E48B00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,6 +50,9 @@
 		7E44E0C12450ABA200E48B00 /* PredictedPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictedPoint.swift; sourceTree = "<group>"; };
 		7E44E0C32450AC4700E48B00 /* DrawingJointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingJointView.swift; sourceTree = "<group>"; };
 		7E737F172451D6C600359950 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7E737F1B2451FE3E00359950 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		7E737F1D2451FE5300359950 /* OnboardingCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCVC.swift; sourceTree = "<group>"; };
+		7E737F202451FE6700359950 /* OnboardingCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCVC.xib; sourceTree = "<group>"; };
 		8B22F20BD17C6FA6A34415BB /* Pods-PoseEstimation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseEstimation.release.xcconfig"; path = "Target Support Files/Pods-PoseEstimation/Pods-PoseEstimation.release.xcconfig"; sourceTree = "<group>"; };
 		C7BE2F810924948FEC6D44F1 /* Pods-PoseEstimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseEstimation.debug.xcconfig"; path = "Target Support Files/Pods-PoseEstimation/Pods-PoseEstimation.debug.xcconfig"; sourceTree = "<group>"; };
 		DB77F6AFDE7A3CAD17CF3D3D /* Pods_PoseEstimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PoseEstimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +92,7 @@
 		7E44E0862450273000E48B00 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7E44E0852450273000E48B00 /* PoseEstimation.app */,
+				7E44E0852450273000E48B00 /* Resilient.ai.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +154,7 @@
 		7E737F142451D5FF00359950 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7E737F1F2451FE5900359950 /* Xib */,
 				7E737F1A2451D82E00359950 /* Storyboards */,
 				7E737F192451D81F00359950 /* Controllers */,
 			);
@@ -175,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				7E44E09C2450331A00E48B00 /* VideoVC.swift */,
+				7E737F1B2451FE3E00359950 /* OnboardingVC.swift */,
+				7E737F1D2451FE5300359950 /* OnboardingCVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,6 +195,14 @@
 				7E44E0932450273300E48B00 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		7E737F1F2451FE5900359950 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				7E737F202451FE6700359950 /* OnboardingCVC.xib */,
+			);
+			path = Xib;
 			sourceTree = "<group>";
 		};
 		CAB3834F4F78705668464286 /* Frameworks */ = {
@@ -215,7 +232,7 @@
 			);
 			name = PoseEstimation;
 			productName = PoseEstimation;
-			productReference = 7E44E0852450273000E48B00 /* PoseEstimation.app */;
+			productReference = 7E44E0852450273000E48B00 /* Resilient.ai.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -257,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E44E0952450273300E48B00 /* LaunchScreen.storyboard in Resources */,
+				7E737F212451FE6700359950 /* OnboardingCVC.xib in Resources */,
 				7E44E0922450273300E48B00 /* Assets.xcassets in Resources */,
 				7E44E0902450273000E48B00 /* Main.storyboard in Resources */,
 			);
@@ -318,11 +336,13 @@
 				7E44E09D2450331A00E48B00 /* VideoVC.swift in Sources */,
 				7E44E0B82450A6EA00E48B00 /* model_cpm.mlmodel in Sources */,
 				7E44E09F2450375A00E48B00 /* TTSManager.swift in Sources */,
+				7E737F1C2451FE3E00359950 /* OnboardingVC.swift in Sources */,
 				7E44E0C02450AB7F00E48B00 /* MovingAverageFilter.swift in Sources */,
 				7E44E0C42450AC4700E48B00 /* DrawingJointView.swift in Sources */,
 				7E44E0892450273000E48B00 /* AppDelegate.swift in Sources */,
 				7E44E0C22450ABA200E48B00 /* PredictedPoint.swift in Sources */,
 				7E17005F24517F86008A45F2 /* VideoWriteManager.swift in Sources */,
+				7E737F1E2451FE5300359950 /* OnboardingCVC.swift in Sources */,
 				7E44E08B2450273000E48B00 /* SceneDelegate.swift in Sources */,
 				7E737F182451D6C600359950 /* Extensions.swift in Sources */,
 			);
@@ -480,7 +500,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lazar89nis.PoseEstimation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Resilient.ai;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -502,7 +522,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lazar89nis.PoseEstimation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Resilient.ai;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

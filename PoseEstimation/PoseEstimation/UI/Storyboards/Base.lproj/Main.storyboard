@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mMW-l8-LVg">
+    <device id="retina5_9" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -253,6 +253,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="138"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AtH-x2-qm8">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="mMW-l8-LVg" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k7t-vN-Zpz">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gMI-1i-lN5" kind="relationship" relationship="rootViewController" id="0pI-KO-gwA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fLB-6c-tcB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1423" y="137"/>
+        </scene>
+        <!--OnboardingVC-->
+        <scene sceneID="sDj-8Z-h93">
+            <objects>
+                <viewController id="gMI-1i-lN5" customClass="OnboardingVC" customModule="PoseEstimation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YMK-ul-jKR">
+                        <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6X2-9P-vDr">
+                                <rect key="frame" x="44" y="0.0" width="724" height="375"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sl6-DR-CuT">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Whm-Ng-g5Q">
+                                <rect key="frame" x="386.66666666666669" y="301" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.71694046259999999" green="0.71706247329999995" blue="0.71692425010000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8n-yc-Vx9">
+                                <rect key="frame" x="722" y="25" width="30" height="30"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" red="0.72779822350000001" green="0.72792202230000003" blue="0.72778183220000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipPressed:" destination="gMI-1i-lN5" eventType="touchUpInside" id="2d6-aT-USM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="vao-4G-gpJ" firstAttribute="trailing" secondItem="J8n-yc-Vx9" secondAttribute="trailing" constant="16" id="3Wf-Kr-FEJ"/>
+                            <constraint firstItem="6X2-9P-vDr" firstAttribute="leading" secondItem="vao-4G-gpJ" secondAttribute="leading" id="bN3-cC-CbM"/>
+                            <constraint firstItem="6X2-9P-vDr" firstAttribute="top" secondItem="YMK-ul-jKR" secondAttribute="top" id="dIe-QY-ViP"/>
+                            <constraint firstItem="Whm-Ng-g5Q" firstAttribute="centerX" secondItem="vao-4G-gpJ" secondAttribute="centerX" id="k7E-gc-Nxu"/>
+                            <constraint firstItem="vao-4G-gpJ" firstAttribute="bottom" secondItem="Whm-Ng-g5Q" secondAttribute="bottom" constant="16" id="nuY-c6-dzs"/>
+                            <constraint firstItem="vao-4G-gpJ" firstAttribute="trailing" secondItem="6X2-9P-vDr" secondAttribute="trailing" id="s9s-pk-0D1"/>
+                            <constraint firstAttribute="bottom" secondItem="6X2-9P-vDr" secondAttribute="bottom" id="sG6-dP-pST"/>
+                            <constraint firstItem="J8n-yc-Vx9" firstAttribute="top" secondItem="vao-4G-gpJ" secondAttribute="top" constant="25" id="zUG-Zx-e8a"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vao-4G-gpJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="joy-O7-w4s"/>
+                    <connections>
+                        <outlet property="collectionView" destination="6X2-9P-vDr" id="oDZ-me-CU2"/>
+                        <outlet property="pageC" destination="Whm-Ng-g5Q" id="fOy-8p-1Oy"/>
+                        <outlet property="skipButton" destination="J8n-yc-Vx9" id="4Dp-X8-0gk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94Z-NS-a7S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-626" y="137"/>
         </scene>
     </scenes>
     <resources>

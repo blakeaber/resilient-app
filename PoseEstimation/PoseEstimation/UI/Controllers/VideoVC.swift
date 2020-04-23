@@ -237,7 +237,6 @@ class VideoVC: UIViewController
     // MARK: - IBActions
     @IBAction func closePressed(_ sender: Any) {
         TTSManager.shared.speak("some test to say")
-        //startStop()
     }
     
     @IBAction func playPressed(_ sender: Any) {
