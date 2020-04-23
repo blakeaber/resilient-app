@@ -1,0 +1,6 @@
+framework module LDHTTPService {
+  umbrella header "LDHTTPService-umbrella.h"
+
+  export *
+  module * { export * }
+}

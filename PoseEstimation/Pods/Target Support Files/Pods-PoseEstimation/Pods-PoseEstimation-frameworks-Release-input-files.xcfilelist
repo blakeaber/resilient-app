@@ -1,0 +1,10 @@
+${PODS_ROOT}/Target Support Files/Pods-PoseEstimation/Pods-PoseEstimation-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework
+${BUILT_PRODUCTS_DIR}/CircleProgressView/CircleProgressView.framework
+${BUILT_PRODUCTS_DIR}/LDHTTPService/LDHTTPService.framework
+${BUILT_PRODUCTS_DIR}/LDMainFramework/LDMainFramework.framework
+${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework
+${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework

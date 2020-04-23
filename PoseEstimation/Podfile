@@ -1,0 +1,6 @@
+target 'PoseEstimation' do
+	use_frameworks!
+    pod 'LDHTTPService'
+    pod 'CircleProgressView'
+
+end

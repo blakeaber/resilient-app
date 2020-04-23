@@ -1,0 +1,51 @@
+PODS:
+  - Alamofire (5.1.0)
+  - AlamofireNetworkActivityIndicator (3.1.0):
+    - Alamofire (~> 5.1)
+  - CircleProgressView (1.2.0)
+  - LDHTTPService (1.0.2):
+    - Alamofire
+    - AlamofireNetworkActivityIndicator
+    - LDMainFramework
+    - PKHUD
+    - ReachabilitySwift
+    - SDWebImage
+    - SwiftyJSON
+  - LDMainFramework (1.0.2)
+  - PKHUD (5.3.0)
+  - ReachabilitySwift (5.0.0)
+  - SDWebImage (5.7.3):
+    - SDWebImage/Core (= 5.7.3)
+  - SDWebImage/Core (5.7.3)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - CircleProgressView
+  - LDHTTPService
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireNetworkActivityIndicator
+    - CircleProgressView
+    - LDHTTPService
+    - LDMainFramework
+    - PKHUD
+    - ReachabilitySwift
+    - SDWebImage
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  AlamofireNetworkActivityIndicator: 6564782bd7b9e6c430ae67d9277af01907b01ca4
+  CircleProgressView: 6b5b091d59dc5e5d2fda84e637a40498cdc39937
+  LDHTTPService: 01ace81fa2da932bc99b76c3b6d783b038ac374f
+  LDMainFramework: 4039c339866379bc90e1eb80a94741de7671d1de
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 03dc3437024a892663d1f739e890a360f0000319
+
+COCOAPODS: 1.8.4
