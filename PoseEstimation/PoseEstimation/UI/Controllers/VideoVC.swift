@@ -105,7 +105,6 @@ class VideoVC: UIViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.videoCapture.start()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -148,6 +147,7 @@ class VideoVC: UIViewController
     
     @objc func playerItemDidPlayToEndTime() {
         self.playB.isHidden = false
+        startStop()
     }
     
     // MARK: - Helpers
@@ -218,18 +218,30 @@ class VideoVC: UIViewController
         }
         DispatchQueue.main.sync {
             visiblePointsL.text = "\(found)"
+            if found < 8
+            {
+                visiblePointsL.textColor = .red
+            } else {
+                visiblePointsL.textColor = .green
+            }
         }
+    }
+    
+    func startSession()
+    {
+        timer.invalidate()
+        self.player.play()
+        startStop()
     }
     
     // MARK: - IBActions
     @IBAction func closePressed(_ sender: Any) {
         TTSManager.shared.speak("some test to say")
-        startStop()
+        //startStop()
     }
     
     @IBAction func playPressed(_ sender: Any) {
         player.seek(to: CMTime.zero)
-        player.play()
         self.playB.isHidden = true
         startTimer()
     }
@@ -302,6 +314,7 @@ class VideoVC: UIViewController
         videoWriteManager = VideoWriteManager(videoSetting: videoSetings, audioSetting: [:], fileType: .mp4)
         //Record success callback
         videoWriteManager?.finishWriteCallback = { [weak self] url in
+            print(url)
             /*guard let strongSelf = self else {return}
              strongSelf.saveToAlbum(atURL: url, complete: { (success) in
              self?.setVideoPlayer(url: url)
@@ -335,7 +348,7 @@ class VideoVC: UIViewController
                 })
             }
             
-            timer.invalidate()
+            startSession()
         } else {
             UIView.animate(withDuration: 0.25, animations: {
                 self.countdownL.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
