@@ -137,5 +137,11 @@ class OnboardingVC: UIViewController, UICollectionViewDelegate, UICollectionView
             currentInfoPage = Int(curr)
             pageC.currentPage = Int(curr)
         }
+        if Int(curr) == 2
+        {
+            skipButton.setTitle("Start", for: .normal)
+        } else {
+            skipButton.setTitle("Skip", for: .normal)
+        }
     }
 }

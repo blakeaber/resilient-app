@@ -17,9 +17,7 @@ class VideoVC: UIViewController
 {
     @IBOutlet weak var previewIV: UIImageView!
 
-    @IBOutlet weak var visiblePointsL: UILabel!
     @IBOutlet weak var videoPlayerV: UIView!
-    @IBOutlet weak var playB: UIButton!
     @IBOutlet weak var videoPV: CircleProgressView!
     
     @IBOutlet weak var countdownL: UILabel!
@@ -27,11 +25,13 @@ class VideoVC: UIViewController
     
     @IBOutlet weak var audioIconIV: UIImageView!
     @IBOutlet weak var videoIconIV: UIImageView!
-    @IBOutlet weak var closeB: UIButton!
     @IBOutlet weak var cameraVWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var jointView: DrawingJointView!
+    @IBOutlet weak var cameraPlaceholderIV: UIImageView!
+    @IBOutlet weak var actionB: UIButton!
     
+    var sessionIsActive = false
     var timer:Timer!
     var startupTime = 10
     
@@ -59,13 +59,15 @@ class VideoVC: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         countdownL.alpha = 0
-        playB.isEnabled = false
+        actionB.isEnabled = false
+        
+        previewIV.isHidden = true
         
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let videoURL = documentsURL.appendingPathComponent("downloadedVideo.mp4")
         
         if FileManager.default.fileExists(atPath:  videoURL.path) {
-            self.playB.isEnabled = true
+            self.actionB.isEnabled = true
             self.videoPV.isHidden = true
             
             self.setVideoPlayer(url: videoURL)
@@ -80,7 +82,7 @@ class VideoVC: UIViewController
                 }
                 print(videoURL)
                 
-                self.playB.isEnabled = true
+                self.actionB.isEnabled = true
                 self.videoPV.isHidden = true
                 
                 self.setVideoPlayer(url: videoURL)
@@ -90,9 +92,6 @@ class VideoVC: UIViewController
                 self.videoPV.setProgress(progress/100.0, animated: true)
             })
         }
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        jointView.addGestureRecognizer(tap)
         
         setUpModel()
         setUpCamera()
@@ -146,8 +145,7 @@ class VideoVC: UIViewController
     }
     
     @objc func playerItemDidPlayToEndTime() {
-        self.playB.isHidden = false
-        startStop()
+        self.perform(#selector(stopRecordingVideoEnded), with: nil, afterDelay: 15)
     }
     
     // MARK: - Helpers
@@ -160,17 +158,22 @@ class VideoVC: UIViewController
         })
     }
     
-    func startStop() {
-        //Did not start recording, start recording
+    func stopRecording()
+    {
+        if isRecording {
+            //Recording, stop recording
+            videoWriteManager?.stopWriting()
+            isRecording = false
+        }
+    }
+    
+    func startRecording()
+    {
         if !isRecording {
             //When shooting multiple segments in succession, an instance needs to be regenerated each time. The previous writer will not be able to use it again because it has finished writing
             setupMoiveWriter()
             videoWriteManager?.startWriting()
             isRecording = true
-        }else {
-            //Recording, stop recording
-            videoWriteManager?.stopWriting()
-            isRecording = false
         }
     }
     
@@ -190,9 +193,8 @@ class VideoVC: UIViewController
             self.playerLayer.frame = self.videoPlayerV.bounds
             self.playerLayer.videoGravity = .resizeAspect
             self.videoPlayerV.layer.addSublayer(self.playerLayer)
-            self.videoPlayerV.bringSubviewToFront(self.playB)
             
-            self.playB.isHidden = false
+            self.actionB.isHidden = false
         }
     }
     
@@ -217,12 +219,11 @@ class VideoVC: UIViewController
             }
         }
         DispatchQueue.main.sync {
-            visiblePointsL.text = "\(found)"
             if found < 8
             {
-                visiblePointsL.textColor = .red
+                videoIconIV.image = UIImage(named: "video")
             } else {
-                visiblePointsL.textColor = .green
+                videoIconIV.image = UIImage(named: "videoActive")
             }
         }
     }
@@ -231,30 +232,50 @@ class VideoVC: UIViewController
     {
         timer.invalidate()
         self.player.play()
-        startStop()
+        startRecording()
     }
     
-    // MARK: - IBActions
-    @IBAction func closePressed(_ sender: Any) {
-        TTSManager.shared.speak("some test to say")
-    }
-    
-    @IBAction func playPressed(_ sender: Any) {
-        player.seek(to: CMTime.zero)
-        self.playB.isHidden = true
-        startTimer()
-    }
-    
-    // MARK: - Gesture Recognizers
-    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        if cameraVWidthConstraint.constant == 0
+    func setActionButton()
+    {
+        if sessionIsActive
         {
-            cameraVWidthConstraint.constant = UIScreen.main.bounds.width*0.6
+            self.actionB.setBackgroundImage(UIImage(named: "close"), for: .normal)
         } else {
-            cameraVWidthConstraint.constant = 0
+            self.actionB.setBackgroundImage(UIImage(named: "play"), for: .normal)
         }
     }
     
+    @objc func stopRecordingVideoEnded() {
+        if self.isRecording
+        {
+            self.actionPressed(self.actionB!)
+        }
+    }
+    
+    // MARK: - IBActions
+    @IBAction func actionPressed(_ sender: Any) {
+        //TTSManager.shared.speak("action pressed")
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(stopRecordingVideoEnded), object: nil)
+
+        sessionIsActive = !sessionIsActive
+        
+        if sessionIsActive
+        {
+            player.seek(to: CMTime.zero)
+            startTimer()
+        } else {
+            stopRecording()
+            
+            player.pause()
+            player.seek(to: CMTime.zero)
+            
+            self.countdownL.alpha = 0
+            timer.invalidate()
+        }
+        
+        setActionButton()
+    }
+        
     // MARK: - Video capture and ML
     func setUpModel() {
         if let visionModel = try? VNCoreMLModel(for: EstimationModel().model) {
@@ -283,6 +304,10 @@ class VideoVC: UIViewController
                         self.videoCapture.avPreviewLayer?.connection?.videoOrientation = orientation
                         self.videoCapture.videoOutput.connection(with: AVMediaType.video)?.videoOrientation = orientation
                     }
+                    DispatchQueue.main.sync {
+
+                    self.cameraPlaceholderIV.isHidden = true
+                    }
                 }
                 self.videoCapture.start()
             }
@@ -297,9 +322,9 @@ class VideoVC: UIViewController
             
             let image = UIImage.init(ciImage: ciImage)
             
-            DispatchQueue.main.async {
+            /*DispatchQueue.main.async {
                 strongSelf.previewIV.image = image
-            }
+            }*/
             strongSelf.videoWriteManager?.processImageData(CIImage: ciImage, atTime: CMSampleBufferGetPresentationTimeStamp(sampleBuffer))
         }
     }
