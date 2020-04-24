@@ -382,6 +382,7 @@ class VideoVC: UIViewController
                 })
             }
         }
+        TTSManager.shared.speak(countdownL.text!)
     }
 }
 
