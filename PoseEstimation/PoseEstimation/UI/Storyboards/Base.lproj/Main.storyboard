@@ -252,18 +252,15 @@
             </objects>
             <point key="canvasLocation" x="132" y="138"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--CustomNC-->
         <scene sceneID="AtH-x2-qm8">
             <objects>
-                <navigationController navigationBarHidden="YES" id="mMW-l8-LVg" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="mMW-l8-LVg" customClass="CustomNC" customModule="Resilient_ai" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k7t-vN-Zpz">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="gMI-1i-lN5" kind="relationship" relationship="rootViewController" id="0pI-KO-gwA"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLB-6c-tcB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -272,7 +269,7 @@
         <!--OnboardingVC-->
         <scene sceneID="sDj-8Z-h93">
             <objects>
-                <viewController id="gMI-1i-lN5" customClass="OnboardingVC" customModule="Resilient_ai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="OnboardingVC" storyboardIdentifier="OnboardingVC" automaticallyAdjustsScrollViewInsets="NO" id="gMI-1i-lN5" customClass="OnboardingVC" customModule="Resilient_ai" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YMK-ul-jKR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

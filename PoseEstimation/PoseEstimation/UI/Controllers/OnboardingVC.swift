@@ -63,6 +63,7 @@ class OnboardingVC: UIViewController, UICollectionViewDelegate, UICollectionView
         collectionView.register(UINib(nibName: "OnboardingCVC", bundle: nil), forCellWithReuseIdentifier: "OnboardingCVC")
         collectionView.isPagingEnabled = true
         
+        
         let flow = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flow.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
@@ -101,7 +102,7 @@ class OnboardingVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize(width:collectionView.frame.width, height: collectionView.frame.height )
+        return CGSize(width:collectionView.frame.width, height: collectionView.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -112,6 +113,10 @@ class OnboardingVC: UIViewController, UICollectionViewDelegate, UICollectionView
         return 0
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
     // MARK: - UIScrollView delegates
 
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
