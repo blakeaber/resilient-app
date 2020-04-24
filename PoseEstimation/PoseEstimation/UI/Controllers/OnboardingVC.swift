@@ -134,11 +134,8 @@ class OnboardingVC: UIViewController, UICollectionViewDelegate, UICollectionView
         let curr: Float = Float(collectionView.contentOffset.x) / pageWidth
         
         if 0.0 != fmodf(curr, 1.0) {
-            print(Int(curr+1))
             pageC.currentPage = Int(curr) + 1
         } else {
-            print(Int(curr))
-
             currentInfoPage = Int(curr)
             pageC.currentPage = Int(curr)
         }
