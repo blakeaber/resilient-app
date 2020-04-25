@@ -33,6 +33,8 @@ class VideoVC: UIViewController
     
     var sessionIsActive = false
     var timer:Timer!
+    var sendDataTimer:Timer!
+
     var startupTime = 10
     
     var player:AVPlayer!
@@ -99,6 +101,8 @@ class VideoVC: UIViewController
         
         NotificationCenter.default.addObserver(self, selector: #selector(speechSynthesizerDidStart), name: .speechSynthesizerDidStart, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(speechSynthesizerDidFinish), name: .speechSynthesizerDidFinish, object: nil)
+        
+        sendDataTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(sendDataToServer), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -204,8 +208,12 @@ class VideoVC: UIViewController
         }
     }
     
-    func countVisiblePoints()
+    /*func countVisiblePoints()
     {
+        if allPredictedPoints.count == 0
+        {
+            return
+        }
         let pontsArr = allPredictedPoints.last!
         var found = 0
         for point in pontsArr
@@ -225,6 +233,15 @@ class VideoVC: UIViewController
             } else {
                 videoIconIV.image = UIImage(named: "videoActive")
             }
+        }
+    }*/
+    func setVideoImage(active: Bool)
+    {
+        if active
+        {
+            videoIconIV.image = UIImage(named: "videoActive")
+        } else {
+            videoIconIV.image = UIImage(named: "video")
         }
     }
     
@@ -254,7 +271,6 @@ class VideoVC: UIViewController
     
     // MARK: - IBActions
     @IBAction func actionPressed(_ sender: Any) {
-        //TTSManager.shared.speak("action pressed")
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(stopRecordingVideoEnded), object: nil)
 
         sessionIsActive = !sessionIsActive
@@ -291,7 +307,7 @@ class VideoVC: UIViewController
         videoCapture = VideoCapture()
         videoCapture.delegate = self
         videoCapture.fps = 30
-        videoCapture.setUp(sessionPreset: .vga640x480) { success in
+        videoCapture.setUp(sessionPreset: .hd1280x720) { success in
             if success {
                 if let previewLayer = self.videoCapture.previewLayer {
                     DispatchQueue.main.async {
@@ -384,6 +400,26 @@ class VideoVC: UIViewController
         }
         TTSManager.shared.speak(countdownL.text!)
     }
+    
+    @objc func sendDataToServer()
+    {
+        if isRecording
+        {
+            HTTPService.shared.sendKeyPoints(predictedPoints: allPredictedPoints, success: { (data) in
+                self.allPredictedPoints.removeAll()
+                let response = DataParser.parseKeypointsResponse(data as! Data)
+                
+                if response.textToSpeech != ""
+                {
+                    TTSManager.shared.speak(response.textToSpeech)
+                }
+                
+                self.setVideoImage(active: response.detectionFailingFlag)
+            }) { (error, statusCode) in
+                print(statusCode)
+            }
+        }
+    }
 }
 
 // MARK: - VideoCaptureDelegate
@@ -442,8 +478,11 @@ extension VideoVC {
             }
             predictedPoints = mvfilters.map { $0.averagedValue() }
             
+            if isRecording
+            {
             self.allPredictedPoints.append(predictedPoints)
-            countVisiblePoints()
+            }
+            //countVisiblePoints()
             /* =================================================================== */
             
             /* =================================================================== */
