@@ -29,6 +29,7 @@
 		7E737F212451FE6700359950 /* OnboardingCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E737F202451FE6700359950 /* OnboardingCVC.xib */; };
 		7E737F352452FBE700359950 /* CustomNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E737F342452FBE700359950 /* CustomNC.swift */; };
 		7E737F3D245477DE00359950 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E737F3C245477DD00359950 /* DataParser.swift */; };
+		7EF3B27924572F6E0082FFFB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF3B27824572F6E0082FFFB /* Config.swift */; };
 		D7E0434097BF53780072D06F /* Pods_PoseEstimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB77F6AFDE7A3CAD17CF3D3D /* Pods_PoseEstimation.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		7E737F202451FE6700359950 /* OnboardingCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCVC.xib; sourceTree = "<group>"; };
 		7E737F342452FBE700359950 /* CustomNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNC.swift; sourceTree = "<group>"; };
 		7E737F3C245477DD00359950 /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		7EF3B27824572F6E0082FFFB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		8B22F20BD17C6FA6A34415BB /* Pods-PoseEstimation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseEstimation.release.xcconfig"; path = "Target Support Files/Pods-PoseEstimation/Pods-PoseEstimation.release.xcconfig"; sourceTree = "<group>"; };
 		C7BE2F810924948FEC6D44F1 /* Pods-PoseEstimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseEstimation.debug.xcconfig"; path = "Target Support Files/Pods-PoseEstimation/Pods-PoseEstimation.debug.xcconfig"; sourceTree = "<group>"; };
 		DB77F6AFDE7A3CAD17CF3D3D /* Pods_PoseEstimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PoseEstimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 				7E44E09E2450375900E48B00 /* TTSManager.swift */,
 				7E737F172451D6C600359950 /* Extensions.swift */,
 				7E737F3C245477DD00359950 /* DataParser.swift */,
+				7EF3B27824572F6E0082FFFB /* Config.swift */,
 				7E737F132451D5F800359950 /* External */,
 			);
 			path = AppCore;
@@ -339,6 +342,7 @@
 				7E44E0A1245043D600E48B00 /* HTTPService.swift in Sources */,
 				7E44E0BA2450A9B500E48B00 /* VideoCapture.swift in Sources */,
 				7E44E0BC2450AA1A00E48B00 /* Measure.swift in Sources */,
+				7EF3B27924572F6E0082FFFB /* Config.swift in Sources */,
 				7E44E09D2450331A00E48B00 /* VideoVC.swift in Sources */,
 				7E44E0B82450A6EA00E48B00 /* model_cpm.mlmodel in Sources */,
 				7E44E09F2450375A00E48B00 /* TTSManager.swift in Sources */,

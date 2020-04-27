@@ -50,10 +50,6 @@ class OnboardingVC: UIViewController, UICollectionViewDelegate, UICollectionView
     @IBOutlet weak var skipButton: UIButton!
     var currentInfoPage = 0
 
-    let onboardingPages: [OnboardingPage] = [OnboardingPage(image: "onboarding1", title: "Welcome to Resilient.ai", info: "Take control of body pain anywhere, on your schedule, instantly"),
-                                             OnboardingPage(image: "onboarding2", title: "Get Moving", info: "Perform physical therapy and receive real-time feedback from the comfort of your home"),
-                                             OnboardingPage(image: "onboarding3", title: "Feel Better", info: "Experience less pain in 5 days or be armed with the evidence you need for a medical consultation")]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -86,14 +82,14 @@ class OnboardingVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     // MARK: - collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return onboardingPages.count
+        return Config.onboardingPages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCVC", for: indexPath) as! OnboardingCVC
 
-        let page:OnboardingPage = onboardingPages[indexPath.row]
+        let page:OnboardingPage = Config.onboardingPages[indexPath.row]
         
         cell.setupCell(image: page.image, title: page.title, info: page.info)
         
@@ -139,7 +135,7 @@ class OnboardingVC: UIViewController, UICollectionViewDelegate, UICollectionView
             currentInfoPage = Int(curr)
             pageC.currentPage = Int(curr)
         }
-        if Int(curr) == 2
+        if Int(curr) == Config.onboardingPages.count - 1
         {
             skipButton.setTitle("Start", for: .normal)
         } else {

@@ -19,7 +19,7 @@ class HTTPService {
         
         let instance = HTTPService()
         
-        instance.service = LDService(timeoutIntervalRequest: 30, timeoutIntervalResource: 30, contentType: "application/json")
+        instance.service = LDService(timeoutIntervalRequest: Config.serverTimeoutIntervalRequest, timeoutIntervalResource: Config.serverTimeoutIntervalResource, contentType: "application/json")
         
         return instance
     }()
@@ -87,7 +87,7 @@ class HTTPService {
             poseEstimatesArr.append(poseEstimateDict)
         }
         
-        service.requestWithURL("https://uociov56j5.execute-api.us-east-1.amazonaws.com/default/feedback", path: "", methodType: .post, params: ["poseEstimates":poseEstimatesArr as AnyObject,"UDID" : UIDevice.current.identifierForVendor!.uuidString as AnyObject], header: nil, encoding: JSONEncoding.default, success: success, failure: failure)
+        service.requestWithURL("\(Config.serverBaseURL)/default/feedback", path: "", methodType: .post, params: ["poseEstimates":poseEstimatesArr as AnyObject,"UDID" : UIDevice.current.identifierForVendor!.uuidString as AnyObject], header: nil, encoding: JSONEncoding.default, success: success, failure: failure)
     }
     
 }

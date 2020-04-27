@@ -14,7 +14,7 @@ class CustomNC: UINavigationController {
         super.viewDidLoad()
 
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if launchedBefore {
+        if launchedBefore && !Config.alwaysShowOnboarding {
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "VideoVC")
             self.setViewControllers([vc], animated: false)
         } else {

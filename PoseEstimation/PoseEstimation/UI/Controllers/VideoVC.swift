@@ -35,12 +35,11 @@ class VideoVC: UIViewController
     var timer:Timer!
     var sendDataTimer:Timer!
 
-    var startupTime = 10
+    var startupTime = Config.videoStartupTime
     
     var player:AVPlayer!
     var playerLayer:AVPlayerLayer!
     
-    typealias EstimationModel = model_cpm
     var request: VNCoreMLRequest!
     var visionModel: VNCoreMLModel!
     var videoCapture: VideoCapture!
@@ -74,7 +73,7 @@ class VideoVC: UIViewController
             
             self.setVideoPlayer(url: videoURL)
         } else {
-            HTTPService.shared.downloadVideo(videoUrl:"http://www.hypercubes1.com/testVideo.mp4", success: { (data) in
+            HTTPService.shared.downloadVideo(videoUrl:Config.videoUrl, success: { (data) in
                 let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
                 let videoURL = documentsURL.appendingPathComponent("downloadedVideo.mp4")
                 do {
@@ -102,7 +101,7 @@ class VideoVC: UIViewController
         NotificationCenter.default.addObserver(self, selector: #selector(speechSynthesizerDidStart), name: .speechSynthesizerDidStart, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(speechSynthesizerDidFinish), name: .speechSynthesizerDidFinish, object: nil)
         
-        sendDataTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(sendDataToServer), userInfo: nil, repeats: true)
+        sendDataTimer = Timer.scheduledTimer(timeInterval: Config.sendingDataToServerInterval, target: self, selector: #selector(sendDataToServer), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -149,7 +148,7 @@ class VideoVC: UIViewController
     }
     
     @objc func playerItemDidPlayToEndTime() {
-        self.perform(#selector(stopRecordingVideoEnded), with: nil, afterDelay: 15)
+        self.perform(#selector(stopRecordingVideoEnded), with: nil, afterDelay: Config.secondsToContinueRecordingAfterVideoEnds)
     }
     
     // MARK: - Helpers
@@ -294,7 +293,7 @@ class VideoVC: UIViewController
         
     // MARK: - Video capture and ML
     func setUpModel() {
-        if let visionModel = try? VNCoreMLModel(for: EstimationModel().model) {
+        if let visionModel = try? VNCoreMLModel(for: Config.EstimationModel().model) {
             self.visionModel = visionModel
             request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
             request?.imageCropAndScaleOption = .scaleFill
@@ -306,8 +305,8 @@ class VideoVC: UIViewController
     func setUpCamera() {
         videoCapture = VideoCapture()
         videoCapture.delegate = self
-        videoCapture.fps = 30
-        videoCapture.setUp(sessionPreset: .hd1280x720) { success in
+        videoCapture.fps = Config.cameraFPS
+        videoCapture.setUp(sessionPreset: Config.cameraResolution) { success in
             if success {
                 if let previewLayer = self.videoCapture.previewLayer {
                     DispatchQueue.main.async {
@@ -347,11 +346,11 @@ class VideoVC: UIViewController
     
     func setupMoiveWriter() {
         //Output video parameter settings, if you want to customize the video resolution, set here. Otherwise, the recommended parameters in the corresponding format can be used
-        guard let videoSetings = self.videoCapture.recommendedVideoSettingsForAssetWriter(writingTo: .mp4)
+        guard let videoSettings = self.videoCapture.recommendedVideoSettingsForAssetWriter(writingTo: .mp4)
             else{
                 return
         }
-        videoWriteManager = VideoWriteManager(videoSetting: videoSetings, audioSetting: [:], fileType: .mp4)
+        videoWriteManager = VideoWriteManager(videoSetting: videoSettings, audioSetting: [:], fileType: .mp4)
         //Record success callback
         videoWriteManager?.finishWriteCallback = { [weak self] url in
             print(url)
@@ -367,7 +366,7 @@ class VideoVC: UIViewController
     {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerTick), userInfo: nil, repeats: true)
         countdownL.alpha = 1
-        startupTime = 11
+        startupTime = Config.videoStartupTime + 1
         timerTick()
     }
     
@@ -398,12 +397,15 @@ class VideoVC: UIViewController
                 })
             }
         }
-        TTSManager.shared.speak(countdownL.text!)
+        if Config.isTTSEnabledForStartupTime
+        {
+            TTSManager.shared.speak(countdownL.text!)
+        }
     }
     
     @objc func sendDataToServer()
     {
-        if isRecording
+        if isRecording && allPredictedPoints.count > 0
         {
             HTTPService.shared.sendKeyPoints(predictedPoints: allPredictedPoints, success: { (data) in
                 self.allPredictedPoints.removeAll()
@@ -471,7 +473,7 @@ extension VideoVC {
             
             /* --------------------- moving average filter ----------------------- */
             if predictedPoints.count != mvfilters.count {
-                mvfilters = predictedPoints.map { _ in MovingAverageFilter(limit: 3) }
+                mvfilters = predictedPoints.map { _ in MovingAverageFilter(limit: Config.movingAverageFilterLimit) }
             }
             for (predictedPoint, filter) in zip(predictedPoints, mvfilters) {
                 filter.add(element: predictedPoint)
@@ -480,7 +482,7 @@ extension VideoVC {
             
             if isRecording
             {
-            self.allPredictedPoints.append(predictedPoints)
+                self.allPredictedPoints.append(predictedPoints)
             }
             //countVisiblePoints()
             /* =================================================================== */
