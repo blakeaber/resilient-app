@@ -3,13 +3,24 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "VideoVC.setupJoinSize(width:height:):VideoVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.cameraPreviewV.frame">
+            </PersistentString>
+            <PersistentString
+               value = "self.cameraPreviewV.frame.size">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "OnboardingVC.collectionView(_:layout:sizeForItemAt:):OnboardingVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "collectionView.frame.size.height">
+               value = "UIScreen.main.bounds.width">
             </PersistentString>
             <PersistentString
-               value = "UIScreen.main.bounds.width">
+               value = "collectionView.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

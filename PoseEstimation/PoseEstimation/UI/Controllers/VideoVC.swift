@@ -16,7 +16,7 @@ import Photos
 class VideoVC: UIViewController
 {
     @IBOutlet weak var previewIV: UIImageView!
-
+    
     @IBOutlet weak var videoPlayerV: UIView!
     @IBOutlet weak var videoPV: CircleProgressView!
     
@@ -31,10 +31,12 @@ class VideoVC: UIViewController
     @IBOutlet weak var cameraPlaceholderIV: UIImageView!
     @IBOutlet weak var actionB: UIButton!
     
+    @IBOutlet weak var jointVWidthC: NSLayoutConstraint!
+    @IBOutlet weak var jointVHeightC: NSLayoutConstraint!
     var sessionIsActive = false
     var timer:Timer!
     var sendDataTimer:Timer!
-
+    
     var startupTime = Config.videoStartupTime
     
     var player:AVPlayer!
@@ -208,32 +210,32 @@ class VideoVC: UIViewController
     }
     
     /*func countVisiblePoints()
-    {
-        if allPredictedPoints.count == 0
-        {
-            return
-        }
-        let pontsArr = allPredictedPoints.last!
-        var found = 0
-        for point in pontsArr
-        {
-            if point != nil
-            {
-                if point!.maxConfidence > DrawingJointView.threshold
-                {
-                    found += 1
-                }
-            }
-        }
-        DispatchQueue.main.sync {
-            if found < 8
-            {
-                videoIconIV.image = UIImage(named: "video")
-            } else {
-                videoIconIV.image = UIImage(named: "videoActive")
-            }
-        }
-    }*/
+     {
+     if allPredictedPoints.count == 0
+     {
+     return
+     }
+     let pontsArr = allPredictedPoints.last!
+     var found = 0
+     for point in pontsArr
+     {
+     if point != nil
+     {
+     if point!.maxConfidence > DrawingJointView.threshold
+     {
+     found += 1
+     }
+     }
+     }
+     DispatchQueue.main.sync {
+     if found < 8
+     {
+     videoIconIV.image = UIImage(named: "video")
+     } else {
+     videoIconIV.image = UIImage(named: "videoActive")
+     }
+     }
+     }*/
     func setVideoImage(active: Bool)
     {
         if active
@@ -271,7 +273,7 @@ class VideoVC: UIViewController
     // MARK: - IBActions
     @IBAction func actionPressed(_ sender: Any) {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(stopRecordingVideoEnded), object: nil)
-
+        
         sessionIsActive = !sessionIsActive
         
         if sessionIsActive
@@ -290,7 +292,7 @@ class VideoVC: UIViewController
         
         setActionButton()
     }
-        
+    
     // MARK: - Video capture and ML
     func setUpModel() {
         if let visionModel = try? VNCoreMLModel(for: Config.EstimationModel().model) {
@@ -299,6 +301,27 @@ class VideoVC: UIViewController
             request?.imageCropAndScaleOption = .scaleFill
         } else {
             fatalError("cannot load the ml model")
+        }
+    }
+    
+    func setupJoinSize(width: CGFloat, height: CGFloat)
+    {
+        var newWidth:CGFloat = 0.0
+        var newHeight:CGFloat = 0.0
+        
+        if width > height
+        {
+            newWidth = self.cameraPreviewV.frame.size.width > width ? width : self.cameraPreviewV.frame.size.width
+            newHeight = height/width*newWidth
+        } else {
+            newHeight = self.cameraPreviewV.frame.size.height > height ? height : self.cameraPreviewV.frame.size.height
+            newWidth = width/height*newHeight
+        }
+        
+        if self.jointVWidthC.constant != newWidth || self.jointVHeightC.constant != newHeight
+        {
+            self.jointVWidthC.constant = newWidth
+            self.jointVHeightC.constant = newHeight
         }
     }
     
@@ -320,8 +343,8 @@ class VideoVC: UIViewController
                         self.videoCapture.videoOutput.connection(with: AVMediaType.video)?.videoOrientation = orientation
                     }
                     DispatchQueue.main.sync {
-
-                    self.cameraPlaceholderIV.isHidden = true
+                        
+                        self.cameraPlaceholderIV.isHidden = true
                     }
                 }
                 self.videoCapture.start()
@@ -330,16 +353,18 @@ class VideoVC: UIViewController
         
         videoCapture.videoDataCallback = { [weak self] (sampleBuffer) in
             guard let strongSelf = self,let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-
+            
             var ciImage = CIImage.init(cvImageBuffer: imageBuffer)
             
             ciImage = ciImage.oriented(.upMirrored)
             
             let image = UIImage.init(ciImage: ciImage)
             
-            /*DispatchQueue.main.async {
-                strongSelf.previewIV.image = image
-            }*/
+            DispatchQueue.main.async {
+                //strongSelf.previewIV.image = image
+                
+                strongSelf.setupJoinSize(width: image.size.width, height: image.size.height)
+            }
             strongSelf.videoWriteManager?.processImageData(CIImage: ciImage, atTime: CMSampleBufferGetPresentationTimeStamp(sampleBuffer))
         }
     }

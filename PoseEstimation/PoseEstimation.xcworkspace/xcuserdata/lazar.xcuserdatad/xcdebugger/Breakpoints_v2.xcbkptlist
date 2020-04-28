@@ -718,8 +718,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -846,8 +846,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "stopRecording()"
             landmarkType = "7">
          </BreakpointContent>
@@ -862,8 +862,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "startRecording()"
             landmarkType = "7">
          </BreakpointContent>
@@ -878,10 +878,10 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
-            landmarkName = "setupMoiveWriter()"
-            landmarkType = "7">
+            startingLineNumber = "378"
+            endingLineNumber = "378"
+            landmarkName = "VideoVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -894,9 +894,9 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "setupMoiveWriter()"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
+            landmarkName = "timerTick()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -910,9 +910,9 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "setUpCamera()"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
+            landmarkName = "setupMoiveWriter()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -958,8 +958,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
+            startingLineNumber = "510"
+            endingLineNumber = "510"
             landmarkName = "visionRequestDidComplete(request:error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -974,8 +974,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "setVideoImage(active:)"
             landmarkType = "7">
             <Locations>
@@ -1022,9 +1022,9 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
-            landmarkName = "sendDataToServer()"
+            startingLineNumber = "435"
+            endingLineNumber = "435"
+            landmarkName = "videoCapture(_:didCaptureVideoFrame:timestamp:)"
             landmarkType = "7">
             <Locations>
                <Location

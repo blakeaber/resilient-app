@@ -31,8 +31,12 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4R-up-1mr" customClass="DrawingJointView" customModule="Resilient_ai" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="375" height="568.33333333333337"/>
+                                <rect key="frame" x="187.66666666666666" y="328.33333333333331" width="0.0" height="0.0"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="URS-EV-vS0"/>
+                                    <constraint firstAttribute="width" id="qyR-2E-UVY"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JvT-WA-6Bm" userLabel="buttons">
                                 <rect key="frame" x="0.0" y="612.33333333333337" width="215" height="165.66666666666663"/>
@@ -185,8 +189,6 @@
                             </constraint>
                             <constraint firstItem="jrp-WB-ALj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="M84-no-Bni"/>
                             <constraint firstItem="aM9-Ud-lMQ" firstAttribute="height" secondItem="pKi-Ej-Gx8" secondAttribute="height" multiplier="0.9" id="PbF-ZB-ReK"/>
-                            <constraint firstItem="o4R-up-1mr" firstAttribute="height" secondItem="jrp-WB-ALj" secondAttribute="height" id="Rox-Ec-tvn"/>
-                            <constraint firstItem="o4R-up-1mr" firstAttribute="width" secondItem="jrp-WB-ALj" secondAttribute="width" id="V89-fp-00e"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JvT-WA-6Bm" secondAttribute="bottom" id="Wha-Yh-GdQ">
                                 <variation key="heightClass=compact" constant="30"/>
                             </constraint>
@@ -217,11 +219,11 @@
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
+                                <exclude reference="DMf-n8-oLF"/>
                                 <include reference="M84-no-Bni"/>
                                 <exclude reference="aSA-JM-VPM"/>
                                 <exclude reference="nuA-y0-hAm"/>
                                 <include reference="xac-Sb-069"/>
-                                <exclude reference="DMf-n8-oLF"/>
                                 <include reference="2kj-1L-Ram"/>
                                 <exclude reference="30c-py-NIP"/>
                                 <exclude reference="HdZ-YZ-q5Q"/>
@@ -241,6 +243,8 @@
                         <outlet property="cameraPreviewV" destination="jrp-WB-ALj" id="p5b-0P-YJh"/>
                         <outlet property="cameraVWidthConstraint" destination="HdZ-YZ-q5Q" id="FeP-5B-dFq"/>
                         <outlet property="countdownL" destination="aM9-Ud-lMQ" id="8UT-zd-NCh"/>
+                        <outlet property="jointVHeightC" destination="URS-EV-vS0" id="aIZ-nf-3FE"/>
+                        <outlet property="jointVWidthC" destination="qyR-2E-UVY" id="je0-CG-5lC"/>
                         <outlet property="jointView" destination="o4R-up-1mr" id="fkY-gO-RJ4"/>
                         <outlet property="previewIV" destination="hsz-bQ-JvF" id="eqi-BD-m8S"/>
                         <outlet property="videoIconIV" destination="83A-HJ-QGt" id="y0z-lL-iCq"/>
