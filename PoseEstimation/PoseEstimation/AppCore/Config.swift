@@ -8,6 +8,7 @@
 
 import Foundation
 import AVKit
+import AWSS3
 
 enum Config {
     static let cameraResolution: AVCaptureSession.Preset = .vga640x480
@@ -35,6 +36,11 @@ enum Config {
                                             OnboardingPage(image: "onboarding3", title: "Feel Better", info: "Experience less pain in 5 days or be armed with the evidence you need for a medical consultation")]
     
     typealias EstimationModel = model_cpm
+    
+    static let bucketName = "thisismylastvideo"
+    static let folderToUpload = "video/user/ios-app/"
+    static let poolId = "eu-west-2:52d508c4-a066-4afa-aa2d-b28f96b65ba5"
+    static let regionType:AWSRegionType = .EUWest2
 }
 
 

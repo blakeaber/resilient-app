@@ -1,4 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-PoseEstimation/Pods-PoseEstimation-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework
+${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework
+${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework
 ${BUILT_PRODUCTS_DIR}/CircleProgressView/CircleProgressView.framework

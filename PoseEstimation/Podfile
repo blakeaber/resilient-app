@@ -2,5 +2,7 @@ target 'PoseEstimation' do
 	use_frameworks!
     pod 'LDHTTPService'
     pod 'CircleProgressView'
-
+    pod 'AWSCore'
+    pod 'AWSCognito'
+    pod 'AWSS3'
 end

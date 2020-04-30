@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E17005F24517F86008A45F2 /* VideoWriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17005E24517F85008A45F2 /* VideoWriteManager.swift */; };
+		7E1B538A245B50980054264D /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B5389245B50970054264D /* S3Manager.swift */; };
 		7E44E0892450273000E48B00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44E0882450273000E48B00 /* AppDelegate.swift */; };
 		7E44E08B2450273000E48B00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44E08A2450273000E48B00 /* SceneDelegate.swift */; };
 		7E44E0902450273000E48B00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E44E08E2450273000E48B00 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		7E17005E24517F85008A45F2 /* VideoWriteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoWriteManager.swift; sourceTree = "<group>"; };
+		7E1B5389245B50970054264D /* S3Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Manager.swift; sourceTree = "<group>"; };
 		7E44E0852450273000E48B00 /* Resilient.ai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resilient.ai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E44E0882450273000E48B00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E44E08A2450273000E48B00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				7E44E09E2450375900E48B00 /* TTSManager.swift */,
 				7E737F172451D6C600359950 /* Extensions.swift */,
 				7E737F3C245477DD00359950 /* DataParser.swift */,
+				7E1B5389245B50970054264D /* S3Manager.swift */,
 				7EF3B27824572F6E0082FFFB /* Config.swift */,
 				7E737F132451D5F800359950 /* External */,
 			);
@@ -357,6 +360,7 @@
 				7E737F1E2451FE5300359950 /* OnboardingCVC.swift in Sources */,
 				7E44E08B2450273000E48B00 /* SceneDelegate.swift in Sources */,
 				7E737F182451D6C600359950 /* Extensions.swift in Sources */,
+				7E1B538A245B50980054264D /* S3Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

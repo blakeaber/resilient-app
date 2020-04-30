@@ -104,6 +104,8 @@ class VideoVC: UIViewController
         NotificationCenter.default.addObserver(self, selector: #selector(speechSynthesizerDidFinish), name: .speechSynthesizerDidFinish, object: nil)
         
         sendDataTimer = Timer.scheduledTimer(timeInterval: Config.sendingDataToServerInterval, target: self, selector: #selector(sendDataToServer), userInfo: nil, repeats: true)
+        
+        S3Manager.shared.setupAWS()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -379,6 +381,9 @@ class VideoVC: UIViewController
         //Record success callback
         videoWriteManager?.finishWriteCallback = { [weak self] url in
             print(url)
+            
+            S3Manager.shared.uploadFile(videoUrl: url)
+            
             /*guard let strongSelf = self else {return}
              strongSelf.saveToAlbum(atURL: url, complete: { (success) in
              self?.setVideoPlayer(url: url)
