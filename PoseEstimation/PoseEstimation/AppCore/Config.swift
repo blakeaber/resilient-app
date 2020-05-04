@@ -22,7 +22,7 @@ enum Config {
     
     static let videoUrl = "http://www.hypercubes1.com/testVideo.mp4"
     
-    static let sendingDataToServerInterval = 1.0
+    static let sendingDataToServerInterval = 5.0
 
     static let videoStartupTime = 10
     static let secondsToContinueRecordingAfterVideoEnds = 15.0
@@ -37,10 +37,10 @@ enum Config {
     
     typealias EstimationModel = model_cpm
     
-    static let bucketName = "thisismylastvideo"
+    static let bucketName = "resilient-ai"
     static let folderToUpload = "video/user/ios-app/"
-    static let poolId = "eu-west-2:52d508c4-a066-4afa-aa2d-b28f96b65ba5"
-    static let regionType:AWSRegionType = .EUWest2
+    static let poolId = "us-east-1:0bbd4e1f-2483-48e6-bf78-cdc5dbc55f6e"
+    static let regionType:AWSRegionType = .USEast1
 }
 
 

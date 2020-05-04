@@ -34,31 +34,12 @@ class S3Manager: NSObject {
         let expression:AWSS3TransferUtilityUploadExpression = AWSS3TransferUtilityUploadExpression()
         
         AWSS3TransferUtility.default().uploadFile(videoUrl, bucket: Config.bucketName, key: Config.folderToUpload+fileName, contentType: "video/mp4", expression: expression) { (task, error) in
-            
             if let error = error {
                 print(error)
             } else {
                 print("video uploaded to s3")
             }
         }
-        
-        /*let request = AWSS3TransferManagerUploadRequest()!
-         request.bucket = Config.bucketName
-         request.key = Config.folderToUpload+fileName
-         request.body = videoUrl*/
-        
-        /*let transferManager = AWSS3TransferManager.default()
-         transferManager.upload(request).continueWith(executor: AWSExecutor.mainThread()) { (task) -> Any? in
-         if let error = task.error {
-         print(error)
-         }
-         if task.result != nil {
-         //print("Uploaded \(key)")
-         //let contentUrl = self.s3Url.appendingPathComponent(self.bucketName).appendingPathComponent(key)
-         //self.contentUrl = contentUrl
-         }
-         return nil
-         }*/
     }
     
     func makeFileName() -> String {
