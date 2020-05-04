@@ -5,4 +5,5 @@ target 'PoseEstimation' do
     pod 'AWSCore'
     pod 'AWSCognito'
     pod 'AWSS3'
+    pod 'Toast-Swift', '~> 5.0.1'
 end

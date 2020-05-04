@@ -42,16 +42,21 @@ public class VideoCapture: NSObject {
     
     func setUpCamera(sessionPreset: AVCaptureSession.Preset, cameraPosition: AVCaptureDevice.Position, completion: @escaping (_ success: Bool) -> Void) {
         
-        captureSession.beginConfiguration()
-        captureSession.sessionPreset = sessionPreset
+        
         
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: cameraPosition) else {
-            fatalError("Error: no video devices available")
+            //fatalError("Error: no video devices available")
+            completion(false)
+            return
         }
         
         guard let videoInput = try? AVCaptureDeviceInput(device: captureDevice) else {
-            fatalError("Error: could not create AVCaptureDeviceInput")
+            completion(false)
+            return
+            //fatalError("Error: could not create AVCaptureDeviceInput")
         }
+        captureSession.beginConfiguration()
+        captureSession.sessionPreset = sessionPreset
         
         if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
@@ -79,8 +84,7 @@ public class VideoCapture: NSObject {
         
         captureSession.commitConfiguration()
         
-        let success = true
-        completion(success)
+        completion(true)
     }
     
     public func start() {

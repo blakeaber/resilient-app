@@ -41,7 +41,7 @@ class S3Manager: NSObject {
         })
     }
     
-    func uploadFile(videoUrl: URL) {
+    func uploadFile(videoUrl: URL, completion: @escaping (_ success: Bool) -> Void) {
         let fileName = makeFileName()
         
         let expression:AWSS3TransferUtilityUploadExpression = AWSS3TransferUtilityUploadExpression()
@@ -49,8 +49,10 @@ class S3Manager: NSObject {
         AWSS3TransferUtility.default().uploadFile(videoUrl, bucket: Config.bucketName, key: Config.folderToUpload+fileName, contentType: "video/mp4", expression: expression) { (task, error) in
             if let error = error {
                 print(error)
+                completion(false)
             } else {
                 print("video uploaded to s3")
+                completion(true)
             }
         }
     }

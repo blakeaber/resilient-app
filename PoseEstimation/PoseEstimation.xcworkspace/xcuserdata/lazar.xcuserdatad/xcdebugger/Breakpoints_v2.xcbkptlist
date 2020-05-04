@@ -711,22 +711,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "276381BE-B844-4E85-BBD3-4594B70C18E3"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "B6ADA252-4603-4CE2-B988-33C958AB8A7B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -846,8 +830,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "stopRecording()"
             landmarkType = "7">
          </BreakpointContent>
@@ -862,8 +846,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "startRecording()"
             landmarkType = "7">
          </BreakpointContent>
@@ -878,8 +862,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
             landmarkName = "setupMoiveWriter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -894,8 +878,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
             landmarkName = "setupMoiveWriter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -910,8 +894,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
             landmarkName = "setUpCamera()"
             landmarkType = "7">
          </BreakpointContent>
@@ -958,8 +942,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "515"
-            endingLineNumber = "515"
+            startingLineNumber = "543"
+            endingLineNumber = "543"
             landmarkName = "visionRequestDidComplete(request:error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -974,8 +958,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "setVideoImage(active:)"
             landmarkType = "7">
             <Locations>
@@ -1022,8 +1006,8 @@
             filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
             landmarkName = "sendDataToServer()"
             landmarkType = "7">
             <Locations>
@@ -1070,9 +1054,9 @@
             filePath = "PoseEstimation/AppCore/S3Manager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "uploadFile(videoUrl:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "uploadFile(videoUrl:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1086,9 +1070,9 @@
             filePath = "PoseEstimation/AppCore/S3Manager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "uploadFile(videoUrl:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "uploadFile(videoUrl:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1102,9 +1086,9 @@
             filePath = "PoseEstimation/AppCore/S3Manager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "uploadFile(videoUrl:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "uploadFile(videoUrl:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1138,6 +1122,118 @@
                   offsetFromSymbolStart = "128">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DE2D4BF2-259B-4143-9BC7-AE62EBFDBEC3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PoseEstimation/AppCore/S3Manager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "setupAWS()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DE2D4BF2-259B-4143-9BC7-AE62EBFDBEC3 - cfa86574d0176d7e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Resilient_ai.S3Manager.setupAWS() -&gt; ()"
+                  moduleName = "Resilient.ai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lazar/Documents/Projects/resilient-app/PoseEstimation/PoseEstimation/AppCore/S3Manager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "480">
+               </Location>
+               <Location
+                  uuid = "DE2D4BF2-259B-4143-9BC7-AE62EBFDBEC3 - 46c8a8ba56dcc68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.AWSTask&lt;__C.NSString&gt;) -&gt; Swift.Optional&lt;Swift.AnyObject&gt; in Resilient_ai.S3Manager.setupAWS() -&gt; ()"
+                  moduleName = "Resilient.ai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lazar/Documents/Projects/resilient-app/PoseEstimation/PoseEstimation/AppCore/S3Manager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "144">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC567427-E733-48BE-A957-514C3D265FCD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PoseEstimation/AppCore/S3Manager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "makeFileName()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3B4FF96-8E34-4923-898D-B20C8A726D2E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PoseEstimation/UI/Controllers/VideoVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
+            landmarkName = "setUpCamera()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA4BE3F0-7245-4E49-B8F2-5A56C8D146B9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PoseEstimation/AppCore/S3Manager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "uploadFile(videoUrl:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83786382-47A5-465B-B918-B12F602A784D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PoseEstimation/AppCore/S3Manager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "uploadFile(videoUrl:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

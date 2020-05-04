@@ -12,6 +12,7 @@ import AVKit
 import Vision
 import os.signpost
 import Photos
+import Toast_Swift
 
 class VideoVC: UIViewController
 {
@@ -57,6 +58,8 @@ class VideoVC: UIViewController
     var postProcessor: HeatmapPostProcessor = HeatmapPostProcessor()
     var mvfilters: [MovingAverageFilter] = []
     
+    var cameraFailedToLoad = false
+    var setupDone = false
     // MARK: - view controller functions
     
     override func viewDidLoad() {
@@ -65,51 +68,22 @@ class VideoVC: UIViewController
         actionB.isEnabled = false
         
         previewIV.isHidden = true
-        
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let videoURL = documentsURL.appendingPathComponent("downloadedVideo.mp4")
-        
-        if FileManager.default.fileExists(atPath:  videoURL.path) {
-            self.actionB.isEnabled = true
-            self.videoPV.isHidden = true
-            
-            self.setVideoPlayer(url: videoURL)
-        } else {
-            HTTPService.shared.downloadVideo(videoUrl:Config.videoUrl, success: { (data) in
-                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let videoURL = documentsURL.appendingPathComponent("downloadedVideo.mp4")
-                do {
-                    try data.write(to: videoURL)
-                } catch {
-                    print("Something went wrong!")
-                }
-                print(videoURL)
-                
-                self.actionB.isEnabled = true
-                self.videoPV.isHidden = true
-                
-                self.setVideoPlayer(url: videoURL)
-            }, failure: { (error, statusCode) in
-                print(statusCode)
-            }, inProgress: { (progress) in
-                self.videoPV.setProgress(progress/100.0, animated: true)
-            })
-        }
-        
-        setUpModel()
-        setUpCamera()
         👨‍🔧.delegate = self
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(speechSynthesizerDidStart), name: .speechSynthesizerDidStart, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(speechSynthesizerDidFinish), name: .speechSynthesizerDidFinish, object: nil)
         
         sendDataTimer = Timer.scheduledTimer(timeInterval: Config.sendingDataToServerInterval, target: self, selector: #selector(sendDataToServer), userInfo: nil, repeats: true)
-        
-        S3Manager.shared.setupAWS()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if !setupDone
+        {
+            runSetup()
+            setupDone = true
+        }
         self.videoCapture.start()
     }
     
@@ -141,7 +115,7 @@ class VideoVC: UIViewController
             self.videoCapture.videoOutput.connection(with: AVMediaType.video)?.videoOrientation = orientation
         }
     }
-    
+        
     // MARK: - notifications
     @objc func speechSynthesizerDidStart() {
         audioIconIV.image = UIImage(named: "audioActive")
@@ -156,6 +130,45 @@ class VideoVC: UIViewController
     }
     
     // MARK: - Helpers
+    func runSetup()
+    {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let videoURL = documentsURL.appendingPathComponent("downloadedVideo.mp4")
+        
+        if FileManager.default.fileExists(atPath:  videoURL.path) {
+            self.actionB.isEnabled = true
+            self.videoPV.isHidden = true
+            
+            self.setVideoPlayer(url: videoURL)
+        } else {
+            HTTPService.shared.downloadVideo(videoUrl:Config.videoUrl, success: { (data) in
+                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                let videoURL = documentsURL.appendingPathComponent("downloadedVideo.mp4")
+                do {
+                    try data.write(to: videoURL)
+                } catch {
+                    print("Something went wrong!")
+                }
+                print(videoURL)
+                
+                self.actionB.isEnabled = true
+                self.videoPV.isHidden = true
+                
+                self.setVideoPlayer(url: videoURL)
+            }, failure: { (error, statusCode) in
+                print(statusCode)
+                self.view.makeToast("Error downloading video from server. Please try again later")
+            }, inProgress: { (progress) in
+                self.videoPV.setProgress(progress/100.0, animated: true)
+            })
+        }
+        
+        setUpModel()
+        setUpCamera()
+        
+        S3Manager.shared.setupAWS()
+    }
+    
     func saveToAlbum(atURL url: URL,complete: @escaping ((Bool) -> Void)){
         
         PHPhotoLibrary.shared().performChanges({
@@ -350,6 +363,12 @@ class VideoVC: UIViewController
                     }
                 }
                 self.videoCapture.start()
+            } else {
+                self.cameraFailedToLoad = true
+                DispatchQueue.main.sync {
+                    self.view.makeToast("Camera stream failed to load. Please check your application permissions.")
+                    self.actionB.isEnabled = false
+                }
             }
         }
         
@@ -382,7 +401,15 @@ class VideoVC: UIViewController
         videoWriteManager?.finishWriteCallback = { [weak self] url in
             print(url)
             
-            S3Manager.shared.uploadFile(videoUrl: url)
+            S3Manager.shared.uploadFile(videoUrl: url) { (status) in
+                if !status
+                {
+                    DispatchQueue.main.sync {
+                        guard let strongSelf = self else {return}
+                        strongSelf.view.makeToast("Error uploading video to server")
+                    }
+                }
+            }
             
             /*guard let strongSelf = self else {return}
              strongSelf.saveToAlbum(atURL: url, complete: { (success) in
@@ -449,6 +476,7 @@ class VideoVC: UIViewController
                 self.setVideoImage(active: response.detectionFailingFlag)
             }) { (error, statusCode) in
                 print(statusCode)
+                self.view.makeToast("Error sending key points to server")
             }
         }
     }
