@@ -12,6 +12,8 @@ import AWSS3
 
 class S3Manager: NSObject {
     
+    var cognitoId: String = UIDevice.current.identifierForVendor!.uuidString
+    
     //MARK: - Shared Instance
     static let shared: S3Manager = {
         
@@ -25,10 +27,21 @@ class S3Manager: NSObject {
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType:Config.regionType, identityPoolId:Config.poolId)
         let configuration = AWSServiceConfiguration(region:Config.regionType, credentialsProvider:credentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        credentialsProvider.getIdentityId().continueWith(block: { (task) -> AnyObject? in
+            if (task.error != nil) {
+                print("Error: " + task.error!.localizedDescription)
+            }
+            else {
+                // the task result will contain the identity id
+                self.cognitoId = task.result! as String
+                print("Cognito id: \(self.cognitoId)")
+            }
+            return task;
+        })
     }
     
     func uploadFile(videoUrl: URL) {
-        
         let fileName = makeFileName()
         
         let expression:AWSS3TransferUtilityUploadExpression = AWSS3TransferUtilityUploadExpression()
@@ -43,12 +56,8 @@ class S3Manager: NSObject {
     }
     
     func makeFileName() -> String {
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dateStr = formatter.string(from: date)
-        
-        let fileName = UIDevice.current.identifierForVendor!.uuidString+dateStr+".mp4"
+        let timestamp:Int = Int(NSDate().timeIntervalSince1970)
+        let fileName = cognitoId+"@\(timestamp)"+".mp4"
         
         return fileName
     }
