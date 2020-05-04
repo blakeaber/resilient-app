@@ -117,11 +117,14 @@ class VideoWriteManager: NSObject {
 
         ciContext.render(preparedImage, to: outputRenderBuffer!, bounds: preparedImage.extent, colorSpace: colorSpace)
 
-        if videoInput.isReadyForMoreMediaData {
+        if videoInput.isReadyForMoreMediaData && isWriting {
+            
            let result = pixelBufferAdaptor.append(outputRenderBuffer!, withPresentationTime: time)
             if !result {
                 print("Failed to stitch video data")
             }
+        } else {
+            print("Video Input not ready")
         }
         
     }
