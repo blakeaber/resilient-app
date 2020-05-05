@@ -16,7 +16,7 @@ enum Config {
     
     static let alwaysShowOnboarding = false
     
-    static let serverBaseURL = "https://uociov56j5.execute-api.us-east-1.amazonaws.com"
+    static let serverBaseURL = "https://9v04x0kwak.execute-api.us-east-1.amazonaws.com"
     static let serverTimeoutIntervalRequest = 30.0
     static let serverTimeoutIntervalResource = 30.0
     
