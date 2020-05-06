@@ -87,7 +87,7 @@ class HTTPService {
             poseEstimatesArr.append(poseEstimateDict)
         }
         
-        service.requestWithURL("\(Config.serverBaseURL)/default/inch-worm", path: "", methodType: .post, params: ["poseEstimates":poseEstimatesArr as AnyObject,"UDID" : UIDevice.current.identifierForVendor!.uuidString as AnyObject], header: nil, encoding: JSONEncoding.default, success: success, failure: failure)
+        service.requestWithURL("\(Config.serverBaseURL)/default/inch-worm", path: "", methodType: .post, params: ["poseEstimates":poseEstimatesArr as AnyObject,"UUID" : UIDevice.current.identifierForVendor!.uuidString as AnyObject,"mobile" : true as AnyObject], header: nil, encoding: JSONEncoding.default, success: success, failure: failure)
     }
     
 }
