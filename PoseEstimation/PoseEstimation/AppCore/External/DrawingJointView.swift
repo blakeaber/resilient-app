@@ -111,19 +111,19 @@ struct PoseEstimationForMobileConstant {
         "top",          //0
         "neck",         //1
         
-        "R shoulder",   //2
-        "R elbow",      //3
-        "R wrist",      //4
-        "L shoulder",   //5
-        "L elbow",      //6
-        "L wrist",      //7
+        "rightShoulder",   //2
+        "rightElbow",      //3
+        "rightWrist",      //4
+        "leftShoulder",   //5
+        "leftElbow",      //6
+        "leftWrist",      //7
         
-        "R hip",        //8
-        "R knee",       //9
-        "R ankle",      //10
-        "L hip",        //11
-        "L knee",       //12
-        "L ankle",      //13
+        "rightHip",        //8
+        "rightKnee",       //9
+        "rightAnkle",      //10
+        "leftHip",        //11
+        "leftKnee",       //12
+        "leftAnkle",      //13
     ]
     
     static let connectedPointIndexPairs: [(Int, Int)] = [
