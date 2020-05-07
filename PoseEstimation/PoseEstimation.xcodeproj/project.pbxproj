@@ -24,6 +24,7 @@
 		7E44E0C02450AB7F00E48B00 /* MovingAverageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44E0BE2450AB7F00E48B00 /* MovingAverageFilter.swift */; };
 		7E44E0C22450ABA200E48B00 /* PredictedPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44E0C12450ABA200E48B00 /* PredictedPoint.swift */; };
 		7E44E0C42450AC4700E48B00 /* DrawingJointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44E0C32450AC4700E48B00 /* DrawingJointView.swift */; };
+		7E69750224649047008CDAAD /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7E69750124649047008CDAAD /* model_hourglass.mlmodel */; };
 		7E737F182451D6C600359950 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E737F172451D6C600359950 /* Extensions.swift */; };
 		7E737F1C2451FE3E00359950 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E737F1B2451FE3E00359950 /* OnboardingVC.swift */; };
 		7E737F1E2451FE5300359950 /* OnboardingCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E737F1D2451FE5300359950 /* OnboardingCVC.swift */; };
@@ -54,6 +55,7 @@
 		7E44E0BE2450AB7F00E48B00 /* MovingAverageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingAverageFilter.swift; sourceTree = "<group>"; };
 		7E44E0C12450ABA200E48B00 /* PredictedPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictedPoint.swift; sourceTree = "<group>"; };
 		7E44E0C32450AC4700E48B00 /* DrawingJointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingJointView.swift; sourceTree = "<group>"; };
+		7E69750124649047008CDAAD /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_hourglass.mlmodel; sourceTree = "<group>"; };
 		7E737F172451D6C600359950 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7E737F1B2451FE3E00359950 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		7E737F1D2451FE5300359950 /* OnboardingCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCVC.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		7E44E0A22450A54300E48B00 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
+				7E69750024649040008CDAAD /* hourglass */,
 				7E44E0A92450A56600E48B00 /* cpm_model */,
 			);
 			path = MLModels;
@@ -132,6 +135,14 @@
 				7E44E0B72450A6EA00E48B00 /* model_cpm.mlmodel */,
 			);
 			path = cpm_model;
+			sourceTree = "<group>";
+		};
+		7E69750024649040008CDAAD /* hourglass */ = {
+			isa = PBXGroup;
+			children = (
+				7E69750124649047008CDAAD /* model_hourglass.mlmodel */,
+			);
+			path = hourglass;
 			sourceTree = "<group>";
 		};
 		7E737F122451D5ED00359950 /* AppCore */ = {
@@ -359,6 +370,7 @@
 				7E17005F24517F86008A45F2 /* VideoWriteManager.swift in Sources */,
 				7E737F1E2451FE5300359950 /* OnboardingCVC.swift in Sources */,
 				7E44E08B2450273000E48B00 /* SceneDelegate.swift in Sources */,
+				7E69750224649047008CDAAD /* model_hourglass.mlmodel in Sources */,
 				7E737F182451D6C600359950 /* Extensions.swift in Sources */,
 				7E1B538A245B50980054264D /* S3Manager.swift in Sources */,
 			);

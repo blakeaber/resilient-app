@@ -20,7 +20,7 @@ enum Config {
     static let serverTimeoutIntervalRequest = 30.0
     static let serverTimeoutIntervalResource = 30.0
     
-    static let videoUrl = "http://www.hypercubes1.com/testVideo.mp4"
+    static let videoUrl = serverBaseURL+"http://www.hypercubes1.com/testVideo.mp4"
     
     static let sendingDataToServerInterval = 5.0
 
@@ -35,7 +35,7 @@ enum Config {
                                             OnboardingPage(image: "onboarding2", title: "Get Moving", info: "Perform physical therapy and receive real-time feedback from the comfort of your home"),
                                             OnboardingPage(image: "onboarding3", title: "Feel Better", info: "Experience less pain in 5 days or be armed with the evidence you need for a medical consultation")]
     
-    typealias EstimationModel = model_cpm
+    typealias EstimationModel = model_hourglass
     
     static let bucketName = "resilient-ai"
     static let folderToUpload = "video/user/ios-app/"
