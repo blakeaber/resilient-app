@@ -16,8 +16,6 @@ import Toast_Swift
 
 class VideoVC: UIViewController
 {
-    @IBOutlet weak var previewIV: UIImageView!
-    
     @IBOutlet weak var videoPlayerV: UIView!
     @IBOutlet weak var videoPV: CircleProgressView!
     
@@ -67,7 +65,6 @@ class VideoVC: UIViewController
         countdownL.alpha = 0
         actionB.isEnabled = false
         
-        previewIV.isHidden = true
         👨‍🔧.delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(speechSynthesizerDidStart), name: .speechSynthesizerDidStart, object: nil)
@@ -223,34 +220,7 @@ class VideoVC: UIViewController
             self.videoCapture.previewLayer?.frame = self.cameraPreviewV.bounds
         }
     }
-    
-    /*func countVisiblePoints()
-     {
-     if allPredictedPoints.count == 0
-     {
-     return
-     }
-     let pontsArr = allPredictedPoints.last!
-     var found = 0
-     for point in pontsArr
-     {
-     if point != nil
-     {
-     if point!.maxConfidence > DrawingJointView.threshold
-     {
-     found += 1
-     }
-     }
-     }
-     DispatchQueue.main.sync {
-     if found < 8
-     {
-     videoIconIV.image = UIImage(named: "video")
-     } else {
-     videoIconIV.image = UIImage(named: "videoActive")
-     }
-     }
-     }*/
+
     func setVideoImage(active: Bool)
     {
         if active
@@ -382,7 +352,6 @@ class VideoVC: UIViewController
             let image = UIImage.init(ciImage: ciImage)
             
             DispatchQueue.main.async {
-                //strongSelf.previewIV.image = image
                 
                 strongSelf.setupJoinSize(width: image.size.width, height: image.size.height)
             }
@@ -410,11 +379,6 @@ class VideoVC: UIViewController
                     }
                 }
             }
-            
-            /*guard let strongSelf = self else {return}
-             strongSelf.saveToAlbum(atURL: url, complete: { (success) in
-             self?.setVideoPlayer(url: url)
-             })*/
         }
     }
     
