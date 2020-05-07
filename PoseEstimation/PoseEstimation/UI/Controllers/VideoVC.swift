@@ -129,6 +129,8 @@ class VideoVC: UIViewController
     // MARK: - Helpers
     func runSetup()
     {
+        S3Manager.shared.setupAWS()
+        
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let videoURL = documentsURL.appendingPathComponent("downloadedVideo.mp4")
         
@@ -138,7 +140,8 @@ class VideoVC: UIViewController
             
             self.setVideoPlayer(url: videoURL)
         } else {
-            HTTPService.shared.downloadVideo(videoUrl:Config.videoUrl, success: { (data) in
+            
+            S3Manager.shared.downloadFile(videoName: Config.videoFilePath, success: { (data) in
                 let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
                 let videoURL = documentsURL.appendingPathComponent("downloadedVideo.mp4")
                 do {
@@ -148,22 +151,24 @@ class VideoVC: UIViewController
                 }
                 print(videoURL)
                 
-                self.actionB.isEnabled = true
-                self.videoPV.isHidden = true
-                
-                self.setVideoPlayer(url: videoURL)
+                DispatchQueue.main.async {
+                    self.actionB.isEnabled = true
+                    self.videoPV.isHidden = true
+                    
+                    self.setVideoPlayer(url: videoURL)
+                }
             }, failure: { (error, statusCode) in
                 print(statusCode)
-                self.view.makeToast("Error downloading video from server. Please try again later")
-            }, inProgress: { (progress) in
+                DispatchQueue.main.async {
+                    self.view.makeToast("Error downloading video from server. Please try again later")
+                }
+            }) { (progress) in
                 self.videoPV.setProgress(progress/100.0, animated: true)
-            })
+            }
         }
         
         setUpModel()
         setUpCamera()
-        
-        S3Manager.shared.setupAWS()
     }
     
     func saveToAlbum(atURL url: URL,complete: @escaping ((Bool) -> Void)){

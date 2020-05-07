@@ -56,7 +56,30 @@ class S3Manager: NSObject {
             }
         }
     }
-    
+        
+    func downloadFile(videoName: String, success:@escaping(Data) -> Void, failure:@escaping (Any?, Int) -> Void, inProgress:@escaping(Double) -> Void) {
+     
+        var progressValue = -1
+        let expression:AWSS3TransferUtilityDownloadExpression = AWSS3TransferUtilityDownloadExpression()
+        expression.progressBlock = {(task, progress) in
+            let newProgressValue = Int(progress.fractionCompleted * 100)
+            if progressValue != newProgressValue
+            {
+                progressValue = newProgressValue
+                inProgress(Double(progressValue))
+            }
+        }
+
+        AWSS3TransferUtility.default().downloadData(fromBucket: Config.bucketName, key: videoName, expression: expression) { (task, url, data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                failure(error,0)
+            } else {
+                success(data!)
+            }
+        }
+    }
+
     func makeFileName() -> String {
         let timestamp:Int = Int(NSDate().timeIntervalSince1970)
         let fileName = cognitoId+"@\(timestamp)"+".mp4"

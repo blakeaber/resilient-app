@@ -20,7 +20,7 @@ enum Config {
     static let serverTimeoutIntervalRequest = 30.0
     static let serverTimeoutIntervalResource = 30.0
     
-    static let videoUrl = serverBaseURL+"http://www.hypercubes1.com/testVideo.mp4"
+    static let videoFilePath = "video/instructional/2_Inch worm.mp4"
     
     static let sendingDataToServerInterval = 5.0
 
