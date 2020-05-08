@@ -14,6 +14,8 @@ enum Config {
     static let cameraResolution: AVCaptureSession.Preset = .vga640x480
     static let cameraFPS = 30
     
+    static let isDebugJointsOn = false
+
     static let alwaysShowOnboarding = false
     
     static let serverBaseURL = "https://9v04x0kwak.execute-api.us-east-1.amazonaws.com"

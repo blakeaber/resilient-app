@@ -71,6 +71,8 @@ class VideoVC: UIViewController
         NotificationCenter.default.addObserver(self, selector: #selector(speechSynthesizerDidFinish), name: .speechSynthesizerDidFinish, object: nil)
         
         sendDataTimer = Timer.scheduledTimer(timeInterval: Config.sendingDataToServerInterval, target: self, selector: #selector(sendDataToServer), userInfo: nil, repeats: true)
+        
+        jointView.isHidden = !Config.isDebugJointsOn
     }
     
     override func viewWillAppear(_ animated: Bool) {
